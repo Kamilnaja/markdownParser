@@ -13,7 +13,10 @@ module.exports = class Parser {
 
     parseInput(input){
     //    parsing logic
-        return input;
+
+        return [...input].map(item => {
+            return item;
+        }).join``
     }
 
 
