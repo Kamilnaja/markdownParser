@@ -1,7 +1,8 @@
-const ParagraphParser = require('./HeadingParser');
+const HeadingParser = require('./HeadingParser');
 const fs = require('fs');
 const readline = require('readline');
-const pp = new ParagraphParser();
+const headingParser = new HeadingParser();
+const re = require('./RegExps');
 
 module.exports = class Parser {
     constructor(file) {
@@ -14,9 +15,17 @@ module.exports = class Parser {
             input: fs.createReadStream('sample.txt'),
             crlfDelay: Infinity
         });
+        // todo - move to separate method
         rl.on('line', (line) => {
-            pp.setInput(line);
-            console.log(pp.getOutput());
+            if (line.match(re.hashOnStart)) { // add better logic
+                console.log(headingParser.getParsed(line));
+            }
+            else if (line.match(re.emptyLine)) {
+                console.log('empty')
+            }
+            else if (line.match(re.paragraphBlock)) {
+                console.log('line ' + line)
+            }
         });
     }
 };
