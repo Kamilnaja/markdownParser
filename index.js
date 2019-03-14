@@ -1,6 +1,5 @@
 const Reader = require("./markdownParser/Reader");
-let stringToParse = `## Hello world`;
-
-let parser = new Reader(stringToParse);
+const Test = require('./markdownParser/ParagraphParser/ParagraphParser.test');
+let parser = new Reader();
 
 console.log(parser._read());
