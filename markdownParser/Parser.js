@@ -1,15 +1,15 @@
 const re = require('./RegExps');
 
 module.exports = class Parser {
-    constructor(){
+    constructor() {
         this.re = re;
     }
 
-    parseInput(input){
+    parseInput(input) {
         return input;
     }
 
-    getParsed(line){
+    getParsed(line) {
         return this.parseInput(line);
     }
 };
