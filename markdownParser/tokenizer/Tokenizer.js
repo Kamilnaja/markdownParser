@@ -9,14 +9,14 @@ module.exports = class Tokenizer {
         var prev = this.lines[0];
         var temp = [];
 
-        for (var i = 0; i < this.lines.length; i++) {
-            if (this.lines[i].startsWith('>') !== prev.startsWith('>')) {
+        this.lines.map((value, i) => {
+            if (this.lines[i].charAt(0) !== prev.charAt(0)) {
                 newArr.push(temp);
                 temp = []
             }
             temp.push(this.lines[i]);
             prev = this.lines[i];
-        }
+        });
         newArr.push(temp);
 
         return newArr;
