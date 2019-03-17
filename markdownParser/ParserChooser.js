@@ -12,7 +12,8 @@ module.exports = class ParserChooser {
 
     chooseParser(line) {
         if (line.match(re.blockQuote)) {
-            return this.repeatCheck(blockquoteParser.parseQuote(line));
+            // return this.repeatCheck(blockquoteParser.parseQuote(line));
+        //
         } else if (line.match(re.headerBlock)) {
             return (headingParser.getParsed(line));
         } else if (line.match(re.emptyLine)) {

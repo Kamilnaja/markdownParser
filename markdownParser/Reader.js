@@ -1,18 +1,21 @@
 const ParserChooser = require('./ParserChooser');
+const Tokenizer = require('./tokenizer/Tokenizer');
 const parserChooser = new ParserChooser();
+const tokenizer = new Tokenizer();
 const fs = require('fs');
 const readline = require('readline');
 
 module.exports = class Parser {
-    _read() {
+    _readByLine() {
         const rl = readline.createInterface({
-            input: fs.createReadStream('sample.txt'),
-            crlfDelay: Infinity
+            input: fs.createReadStream('sample.txt')
         });
         rl.on('line', (line) => {
-            console.log(
-                parserChooser.chooseParser(line)
-            );
+            tokenizer.aggregate(line);
+            console.log("saving done");
+        });
+        rl.on('close', () => {
+            console.log(tokenizer.tokenize());
         });
     }
 };
