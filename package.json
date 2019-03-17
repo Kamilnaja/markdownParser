@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Kamilnaja/markdownParser/issues"
   },
-  "homepage": "https://github.com/Kamilnaja/markdownParser#readme"
+  "homepage": "https://github.com/Kamilnaja/markdownParser#readme",
+  "dependencies": {
+    "rxjs": "^6.4.0"
+  }
 }
