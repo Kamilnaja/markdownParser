@@ -5,5 +5,6 @@ module.exports = Object.freeze({
     blockQuote: /^(>)(.+)/g,
     replaceBlockquoteTag: /(#{1,6})(.*)(<\/blockquote>)$/g,
     startswithBlockquoteTag: /^<blockquote>/,
-    startsWithHash: /^#./g
+    startsWithHash: /^#./g,
+    startsWithBlocquoteMd: /^>/g
 });
