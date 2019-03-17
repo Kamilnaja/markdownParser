@@ -4,6 +4,10 @@ module.exports = class Tokenizer {
         this._parsedLines = [];
     }
 
+    get parsedLines() {
+        return this._parsedLines;
+    }
+
     tokenize() { // change to private!
         var newArr = [];
         var prev = this.lines[0];
@@ -18,12 +22,13 @@ module.exports = class Tokenizer {
             prev = this.lines[i];
         });
         newArr.push(temp);
-
-        return newArr;
+        this._parsedLines = newArr;
     }
 
     aggregate(line) {
         this.lines.push(line);
     }
+
+
 
 };

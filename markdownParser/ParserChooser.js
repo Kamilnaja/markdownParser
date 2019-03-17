@@ -8,9 +8,9 @@ const blockquoteParser = new BlockquoteParser();
 const re = require('./RegExps');
 
 module.exports = class ParserChooser {
-    constructor() {}
 
     chooseParser(line) {
+        console.log(line);
         if (line.match(re.blockQuote)) {
             // return this.repeatCheck(blockquoteParser.parseQuote(line));
         //
@@ -20,6 +20,8 @@ module.exports = class ParserChooser {
             return ('<br/>')
         } else if (line.match(re.paragraphLine)) {
             return (paragraphLine.getParsed(line))
+        } else if (line.match(re.uList)){
+        //    todo - return uList parser
         }
     }
 

@@ -1,6 +1,6 @@
 const ParserChooser = require('./ParserChooser');
-const Tokenizer = require('./tokenizer/Tokenizer');
 const parserChooser = new ParserChooser();
+const Tokenizer = require('./tokenizer/Tokenizer');
 const tokenizer = new Tokenizer();
 const fs = require('fs');
 const readline = require('readline');
@@ -12,10 +12,13 @@ module.exports = class Parser {
         });
         rl.on('line', (line) => {
             tokenizer.aggregate(line);
-            console.log("saving done");
         });
         rl.on('close', () => {
-            console.log(tokenizer.tokenize());
+            tokenizer.tokenize();
+            tokenizer.parsedLines
+                .map(item => item
+                    .map(item => parserChooser.chooseParser(item))
+                );
         });
     }
 };
