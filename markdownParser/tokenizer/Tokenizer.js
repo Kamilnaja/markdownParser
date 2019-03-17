@@ -1,13 +1,18 @@
 module.exports = class Tokenizer {
-    constructor(){
-        this.lines = ['hello']
+    constructor() {
+        this.lines = [];
+        this.tokenizedLines = [];
     }
 
-    tokenize(){
+    parseLines() {
+        this.lines.map
+    }
+
+    tokenize() {
         return this.lines;
     }
 
-    aggregate(line){
+    aggregate(line) {
         this.lines.push(line);
     }
 };
