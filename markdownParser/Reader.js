@@ -6,19 +6,29 @@ const fs = require('fs');
 const readline = require('readline');
 
 module.exports = class Parser {
+    constructor() {
+        this._lines = [];
+    }
+
     _readByLine() {
         const rl = readline.createInterface({
             input: fs.createReadStream('sample.txt')
         });
         rl.on('line', (line) => {
-            tokenizer.aggregate(line);
+            this._lines.push(line);
+            // tokenizer.aggregate(line);
         });
         rl.on('close', () => {
-            tokenizer.tokenize();
-            tokenizer.parsedLines
-                .map(item => item
-                    .map(item => parserChooser.chooseParser(item))
-                );
+            console.log("successfully saved");
+            console.log(this._lines);
+            // tokenizer.tokenize();
+            // tokenizer.parsedLines
+            // .map(item => parserChooser.chooseParser(item));
         });
+    }
+
+    get lines() {
+        this._readByLine();
+        return this._lines;
     }
 };
