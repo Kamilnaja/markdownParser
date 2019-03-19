@@ -1,5 +1,8 @@
-const Reader = require("./markdownParser/Reader");
-const Test = require('./markdownParser/paragraphParser/ParagraphParser.test');
-let parser = new Reader();
+const Reader = require("./markdownParser/reader/Reader");
+const reader = new Reader('sample.txt');
+const Tokenizer = require('./markdownParser/tokenizer/Tokenizer');
+const tokenizer = new Tokenizer();
 
-parser._readByLine();
+console.log(
+    tokenizer.tokenize(reader.readFile())
+);

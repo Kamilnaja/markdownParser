@@ -1,31 +1,23 @@
+const Reader = require('./../reader/Reader');
+const reader = new Reader("./../../sample.txt");
+
 module.exports = class Tokenizer {
-    constructor() {
-        this.lines = [];
-        this._parsedLines = [];
-    }
 
-    get parsedLines() {
-        return this._parsedLines;
-    }
-
-    tokenize() {
+    tokenize(lines) {
         var newArr = [];
-        var prev = this.lines[0];
+        var prev = lines[0];
         var temp = [];
 
-        this.lines.map((value, i) => {
-            if (this.lines[i].charAt(0) !== prev.charAt(0)) {
+        lines.map((value, i) => {
+            if (lines[i].charAt(0) !== prev.charAt(0)) {
                 newArr.push(temp);
                 temp = []
             }
-            temp.push(this.lines[i]);
-            prev = this.lines[i];
+            temp.push(lines[i]);
+            prev = lines[i];
         });
         newArr.push(temp);
-        this._parsedLines = newArr;
+        return newArr;
     }
 
-    aggregate(line) {
-        this.lines.push(line);
-    }
 };
