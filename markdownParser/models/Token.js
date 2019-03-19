@@ -1,6 +1,10 @@
+/*
+@param {number} id
+type: string
+content: string
+ */
 module.exports = class Token {
-    constructor(id, type, content) {
-        this.id = id;
+    constructor(type, content) {
         this.type = type;
         this.content = content;
     }
