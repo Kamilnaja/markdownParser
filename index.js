@@ -11,18 +11,26 @@ const bqp = new BlockQuoteParser();
 const ParagraphParser = require('./markdownParser/parsers/paragraphParser/ParagraphParser')
 const pp = new ParagraphParser();
 
+const HeadingParser = require('./markdownParser/parsers/headingParser/HeadingParser')
+const hp = new HeadingParser;
+
 const res = parserChooser.setParser(
     tokenizer.tokenize(
         reader.readFile()
     )
 )
-
+// todo -return tokenized text with all data needed to parse!
 const item = res.map(item => {
-    if (item.type === 'bq') {
-        return bqp.getParsed(item.content)
-    } else if (item.type = 'p'){
-        return pp.getParsed(item.content);
-    }
+    return item.type
+    // return item.type;
+    // if (item.type === 'bq') {
+    //     return bqp.getParsed(item.content)
+    // } 
+    // else if (item.type = 'hx') {
+    //     return 'hx'
+    // }
+    // else if (item.type = 'p'){
+    //     return pp.getParsed(item.content);
+    // }  
 })
 
-console.log(item);

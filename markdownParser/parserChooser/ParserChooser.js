@@ -13,12 +13,15 @@ module.exports = class ParserChooser {
     }
 
     setParser(line) {
-        return line.map(item => new Token(
-            this._parsers.filter(parser => item[0].match(re[parser[0]]))[0][1], item)
-        );
+        if (typeof line === 'object') {
+            return line.map(item => this._parsers.filter(parser => item[0].match(re[parser[0]]))[0][1])
+        } else {
+            return (this._parsers.filter(parser => line.match(re[parser[0]]))[0][1]);
+        }
     }
 
     repeatCheck(line) {
         return this.chooseParser(line);
     }
 };
+

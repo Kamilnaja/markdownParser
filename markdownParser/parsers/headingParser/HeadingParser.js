@@ -1,8 +1,7 @@
 const Parser = require('../Parser');
 
 module.exports = class HeadingParser extends Parser {
-    parseInput(input) {
-
+    getParsed(input) {
         input.map(item => {
             const count = (item.match(/#/g) || []).length;
 
@@ -14,3 +13,4 @@ module.exports = class HeadingParser extends Parser {
         })
     }
 };
+// todo - h2 works bad

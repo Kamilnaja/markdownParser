@@ -1,6 +1,3 @@
-const Reader = require('./../reader/Reader');
-const reader = new Reader("./../../sample.txt");
-
 module.exports = class Tokenizer {
 
     tokenize(lines) {
@@ -19,5 +16,4 @@ module.exports = class Tokenizer {
         newArr.push(temp);
         return newArr;
     }
-
 };
