@@ -14,23 +14,11 @@ const pp = new ParagraphParser();
 const HeadingParser = require('./markdownParser/parsers/headingParser/HeadingParser')
 const hp = new HeadingParser;
 
-const res = parserChooser.setParser(
-    tokenizer.tokenize(
+const res = tokenizer.tokenize(
         reader.readFile()
     )
-)
-// todo -return tokenized text with all data needed to parse!
-const item = res.map(item => {
-    return item.type
-    // return item.type;
-    // if (item.type === 'bq') {
-    //     return bqp.getParsed(item.content)
-    // } 
-    // else if (item.type = 'hx') {
-    //     return 'hx'
-    // }
-    // else if (item.type = 'p'){
-    //     return pp.getParsed(item.content);
-    // }  
-})
+
+console.log(parserChooser.getParsedWithAllData(res));
+// todo - parse this data 
+// todo write data into file
 

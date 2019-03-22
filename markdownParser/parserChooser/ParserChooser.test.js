@@ -16,12 +16,3 @@ const tokenizedText = [
     ['']];
 
 
-let parsedD = tokenizedText.map(
-    item => ({
-        content: item.map(data => ({
-            lineType: parserChooser.setParser(data.split(' ').slice(1).join(' ')),
-            lineContent: data.split(' ').slice(1).join(' ')
-        })),
-        blockType: parserChooser.setParser(item[0])
-    })
-)

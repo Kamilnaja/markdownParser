@@ -13,4 +13,3 @@ module.exports = class HeadingParser extends Parser {
         })
     }
 };
-// todo - h2 works bad

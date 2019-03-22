@@ -11,7 +11,7 @@ module.exports = class ParserChooser {
             ['emptyLine', 'empty'],
         ];
     }
-
+// todo - probably remove first if 
     setParser(line) {
         if (typeof line === 'object') {
             return line.map(item => this._parsers.filter(parser => item[0].match(re[parser[0]]))[0][1])
@@ -20,8 +20,17 @@ module.exports = class ParserChooser {
         }
     }
 
-    repeatCheck(line) {
-        return this.chooseParser(line);
+    getParsedWithAllData(text) {
+        return text.map(
+            item => ({
+                content: item.map(data => ({
+                    lineType: this.setParser(data.split(' ').slice(1).join(' ')),
+                    lineContent: data.split(' ').slice(1).join(' ')
+                })),
+                blockType: this.setParser(item[0])
+            })
+        )
     }
+
 };
 
