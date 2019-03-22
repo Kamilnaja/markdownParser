@@ -18,9 +18,7 @@ module.exports = class ParserChooser {
         );
     }
 
-
     repeatCheck(line) {
         return this.chooseParser(line);
     }
-
 };

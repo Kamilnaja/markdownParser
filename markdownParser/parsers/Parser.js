@@ -1,4 +1,4 @@
-const re = require('./RegExps');
+const re = require('../RegExps');
 
 module.exports = class Parser {
     constructor() {
